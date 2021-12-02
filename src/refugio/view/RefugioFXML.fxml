@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="748.0" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
-    
+<AnchorPane id="AnchorPane" prefHeight="748.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="refugio.controller.RefugioFXMLController">
+   <children>
+      <Pane prefHeight="766.0" prefWidth="285.0">
+         <children>
+            <VBox layoutX="-1.0" prefHeight="766.0" prefWidth="285.0">
+               <children>
+                  <Pane prefHeight="152.0" prefWidth="310.0">
+                     <children>
+                        <Label layoutX="84.0" layoutY="55.0" text="Regala Vida">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <FontAwesomeIconView glyphName="PAW" layoutX="14.0" layoutY="102.0" size="60" />
+                     </children>
+                  </Pane>
+                  <MFXButton prefHeight="75.0" prefWidth="310.0" text="Animales" />
+                  <MFXButton layoutX="10.0" layoutY="162.0" prefHeight="75.0" prefWidth="310.0" text="Adopción" />
+                  <MFXButton onAction="#prueba" text="PRUEBAS" />
+               </children></VBox>
+         </children>
+      </Pane>
+      <StackPane layoutX="285.0" layoutY="151.0" prefHeight="615.0" prefWidth="798.0">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="411.0" minHeight="10.0" prefHeight="331.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView fx:id="tablaAnimal" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                    <columns>
+                      <TableColumn fx:id="animalId" prefWidth="23.0" text="id" />
+                      <TableColumn fx:id="animalNombre" prefWidth="92.0" text="nombre" />
+                        <TableColumn fx:id="animalSexo" prefWidth="32.0" text="sexo" />
+                        <TableColumn fx:id="animalFecha_nac" prefWidth="78.0" text="fecha_nac" />
+                        <TableColumn fx:id="animalColor" prefWidth="124.0" text="color_predominante" />
+                        <TableColumn fx:id="animalRaza" prefWidth="84.33331298828125" text="raza" />
+                        <TableColumn fx:id="animalEspecie" prefWidth="55.66668701171875" text="especie" />
+                        <TableColumn fx:id="animalPeso" prefWidth="42.66668701171875" text="peso" />
+                        <TableColumn fx:id="animalFecha_alta" prefWidth="70.0" text="fecha_alta" />
+                        <TableColumn fx:id="animalFecha_adopcion" prefWidth="101.0" text="fecha_adopcion" />
+                        <TableColumn fx:id="animalCaracteristicas" prefWidth="95.33331298828125" text="caracteristicas" />
+                    </columns>
+                  </TableView>
+                  <MFXTextField fx:id="filtrarTextField" />
+               </children>
+            </GridPane>
+         </children>
+      </StackPane>
+   </children>
 </AnchorPane>
