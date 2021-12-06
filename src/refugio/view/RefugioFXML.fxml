@@ -2,13 +2,22 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXListView?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
@@ -31,41 +40,156 @@
                         <FontAwesomeIconView glyphName="PAW" layoutX="14.0" layoutY="102.0" size="60" />
                      </children>
                   </Pane>
-                  <MFXButton prefHeight="75.0" prefWidth="310.0" text="Animales" />
-                  <MFXButton layoutX="10.0" layoutY="162.0" prefHeight="75.0" prefWidth="310.0" text="Adopción" />
+                  <MFXButton fx:id="btnListaAdopcion" layoutX="10.0" layoutY="162.0" onAction="#mostrarListaAdopcion" prefHeight="75.0" prefWidth="310.0" text="ListaAdopción" />
+                  <MFXButton fx:id="btnVacunacion" layoutX="10.0" layoutY="237.0" onAction="#mostrarVacunacion" prefHeight="75.0" prefWidth="310.0" text="Vacunación" />
                   <MFXButton onAction="#prueba" text="PRUEBAS" />
                </children></VBox>
          </children>
       </Pane>
-      <StackPane layoutX="285.0" layoutY="151.0" prefHeight="615.0" prefWidth="798.0">
+      <StackPane layoutX="285.0" prefHeight="766.0" prefWidth="798.0">
          <children>
-            <GridPane>
+            <GridPane style="-fx-background-color: white;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="411.0" minHeight="10.0" prefHeight="331.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="151.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="448.0" minHeight="10.0" prefHeight="296.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="319.0" minHeight="10.0" prefHeight="319.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView fx:id="tablaAnimal" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="tablaAnimal" editable="true" prefHeight="339.0" prefWidth="798.0" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn fx:id="animalId" prefWidth="23.0" text="id" />
-                      <TableColumn fx:id="animalNombre" prefWidth="92.0" text="nombre" />
-                        <TableColumn fx:id="animalSexo" prefWidth="32.0" text="sexo" />
-                        <TableColumn fx:id="animalFecha_nac" prefWidth="78.0" text="fecha_nac" />
-                        <TableColumn fx:id="animalColor" prefWidth="124.0" text="color_predominante" />
-                        <TableColumn fx:id="animalRaza" prefWidth="84.33331298828125" text="raza" />
-                        <TableColumn fx:id="animalEspecie" prefWidth="55.66668701171875" text="especie" />
-                        <TableColumn fx:id="animalPeso" prefWidth="42.66668701171875" text="peso" />
-                        <TableColumn fx:id="animalFecha_alta" prefWidth="70.0" text="fecha_alta" />
-                        <TableColumn fx:id="animalFecha_adopcion" prefWidth="101.0" text="fecha_adopcion" />
-                        <TableColumn fx:id="animalCaracteristicas" prefWidth="95.33331298828125" text="caracteristicas" />
+                      <TableColumn fx:id="animalId" prefWidth="23.0" sortable="false" text="id" />
+                      <TableColumn fx:id="animalNombre" prefWidth="92.0" sortable="false" text="nombre" />
+                        <TableColumn fx:id="animalSexo" prefWidth="32.0" sortable="false" text="sexo" />
+                        <TableColumn fx:id="animalFecha_nac" prefWidth="78.0" sortable="false" text="fecha_nac" />
+                        <TableColumn fx:id="animalColor" prefWidth="124.0" sortable="false" text="color_predominante" />
+                        <TableColumn fx:id="animalRaza" prefWidth="84.33331298828125" sortable="false" text="raza" />
+                        <TableColumn fx:id="animalEspecie" prefWidth="55.66668701171875" sortable="false" text="especie" />
+                        <TableColumn fx:id="animalPeso" prefWidth="42.66668701171875" sortable="false" text="peso" />
+                        <TableColumn fx:id="animalFecha_alta" prefWidth="70.0" sortable="false" text="fecha_alta" />
+                        <TableColumn fx:id="animalFecha_adopcion" prefWidth="101.0" sortable="false" text="fecha_adopcion" />
+                        <TableColumn fx:id="animalCaracteristicas" prefWidth="95.33331298828125" sortable="false" text="caracteristicas" />
                     </columns>
                   </TableView>
-                  <MFXTextField fx:id="filtrarTextField" />
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Filtro">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <MFXTextField fx:id="filtrarTextField" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="187.0" promptText="buscar..." />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Alta">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" layoutX="648.0" layoutY="12.0" prefHeight="122.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <MFXTextField fx:id="nombre_alta" minWidth="-Infinity" prefHeight="25.0" prefWidth="95.0" promptText="nombre">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                          </MFXTextField>
+                                          <MFXLegacyComboBox fx:id="sexo_alta" prefHeight="23.0" prefWidth="46.0" promptText="sexo">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                          </MFXLegacyComboBox>
+                                          <ColorPicker fx:id="color_alta" prefHeight="25.0" prefWidth="95.0">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                          </ColorPicker>
+                                          <MFXDatePicker fx:id="fecha_nac_alta">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                          </MFXDatePicker>
+                                          <MFXLegacyComboBox fx:id="especie_alta" onAction="#comrpobarEspecie" prefHeight="23.0" prefWidth="66.0" promptText="especie">
+                                             <HBox.margin>
+                                                <Insets left="16.0" />
+                                             </HBox.margin>
+                                          </MFXLegacyComboBox>
+                                          <Pane prefHeight="122.0" prefWidth="106.0">
+                                             <children>
+                                                <MFXLegacyComboBox fx:id="gato_raza_alta" disable="true" layoutX="10.0" layoutY="50.0" prefHeight="23.0" prefWidth="85.0" promptText="raza" />
+                                                <MFXLegacyComboBox fx:id="perro_raza_alta" disable="true" layoutX="10.0" layoutY="50.0" prefHeight="23.0" prefWidth="85.0" promptText="raza" />
+                                             </children>
+                                          </Pane>
+                                          <MFXTextField fx:id="peso_alta" minWidth="-Infinity" prefHeight="25.0" prefWidth="32.0" promptText="peso">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                          </MFXTextField>
+                                          <Pane prefHeight="122.0" prefWidth="130.0">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <TextArea fx:id="caracteristicas_alta" layoutY="51.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="131.0" />
+                                             </children>
+                                          </Pane>
+                                          <MFXButton fx:id="btn_alta" onAction="#introducir_animal" onMouseEntered="#comrprobar_alta" prefHeight="25.0" prefWidth="70.0" text="Introducir">
+                                             <HBox.margin>
+                                                <Insets left="8.0" />
+                                             </HBox.margin>
+                                          </MFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Adopcion">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <MFXLegacyComboBox fx:id="adpComboBox" layoutX="519.0" layoutY="50.0" onAction="#habilitarAdopcion" prefHeight="23.0" prefWidth="142.0" />
+                                    <MFXButton fx:id="btnAdoptar" disable="true" layoutX="675.0" layoutY="49.0" onAction="#adoptarAnimal" prefHeight="25.0" prefWidth="109.0" text="Adoptar" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <children>
+                        <GridPane fx:id="panelVacunacion" style="-fx-background-color: white;">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="107.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="460.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="169.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="C1" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TableView>
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                              <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                 <children>
+                                    <MFXLegacyComboBox layoutX="38.0" layoutY="148.0" prefHeight="23.0" prefWidth="95.0" />
+                                    <MFXButton layoutX="38.0" layoutY="97.0" prefHeight="25.0" prefWidth="95.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <Pane fx:id="panelAdopcion" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+                           <children>
+                              <MFXListView fx:id="listaAdopcion" layoutX="266.0" layoutY="14.0" prefHeight="296.0" prefWidth="267.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
                </children>
             </GridPane>
          </children>

@@ -10,7 +10,7 @@ public interface DAOI<T,ID> {
     ID save(T t);
     T read(Integer id);
     void update(T t);
-    void insert(T t);
+    int insert(T t);
     void dosisEsencial();//Suministrar todas las dosis esenciales.
     void suministrarDosis(T t);//Suministrar una dosis especifica.
     Collection<T> getAll();//Obtener lista de animales.
