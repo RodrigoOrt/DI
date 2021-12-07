@@ -12,13 +12,12 @@ import refugio.model.Animal;
 import refugio.util.ConnectionManager;
 import java.sql.ResultSet;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  *
  * @author rodri
  */
-public class DAO implements DAOI<Animal,Integer>{
+public class animalDAO implements DAOI<Animal,Integer>{
     
     LocalDate fechaActual = LocalDate.now();
     
@@ -53,12 +52,13 @@ public class DAO implements DAOI<Animal,Integer>{
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(animalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return animales;
     }
     
-    public List<String> getRaza(String especie){
+    @Override
+    public List<String> getValorPorEspecie(String especie){
         String consulta= "Select nombre FROM raza R, especie E "
         + "WHERE E.id=R.idespecie AND E.tipo='"+ especie+"'";
         
@@ -74,7 +74,7 @@ public class DAO implements DAOI<Animal,Integer>{
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(animalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return razas;
     }
@@ -90,7 +90,7 @@ public class DAO implements DAOI<Animal,Integer>{
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(animalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return key;
     }
@@ -110,7 +110,7 @@ public class DAO implements DAOI<Animal,Integer>{
   
         }
         catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(animalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return key;
     }
@@ -133,30 +133,9 @@ public class DAO implements DAOI<Animal,Integer>{
             }
         }
         catch (SQLException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(animalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return key;
-    }
-
-    @Override
-    public void dosisEsencial() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void suministrarDosis(Animal t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        dao.getAll();
-        LocalDate date = LocalDate.now();    
-        LocalDate yesterday = date.minusDays(1);    
-        LocalDate tomorrow = yesterday.plusDays(2);    
-        System.out.println("Today date: "+date);    
-        System.out.println("Yesterday date: "+yesterday);    
-        System.out.println("Tomorrow date: "+tomorrow);   
     }
 
     @Override
@@ -174,4 +153,14 @@ public class DAO implements DAOI<Animal,Integer>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /*public static void main(String[] args) {
+        animalDAO dao = new animalDAO();
+        dao.getAll();
+        LocalDate date = LocalDate.now();    
+        LocalDate yesterday = date.minusDays(1);    
+        LocalDate tomorrow = yesterday.plusDays(2);    
+        System.out.println("Today date: "+date);    
+        System.out.println("Yesterday date: "+yesterday);    
+        System.out.println("Tomorrow date: "+tomorrow);   
+    }*/
 }

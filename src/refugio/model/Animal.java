@@ -1,6 +1,7 @@
 package refugio.model;
 
-import java.util.Date;
+import java.io.FileInputStream;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -20,8 +21,12 @@ public class Animal {
     private String fecha_alta;
     private String fecha_adp;
     private String caracteristicas;
+    private Image foto;
     
-    public Animal(int id, String nombre, String sexo, String fecha_nac, String color, int id_raza, String raza, String especie, double peso, String fecha_alta, String fecha_adp, String caracteristicas) {
+    public Animal(int id, String nombre, String sexo, String fecha_nac, 
+        String color, int id_raza, String raza, String especie, double peso, 
+        String fecha_alta, String fecha_adp, String caracteristicas) {
+        
         this.id = id;
         this.nombre = nombre;
         this.sexo = sexo;
@@ -34,6 +39,14 @@ public class Animal {
         this.fecha_alta = fecha_alta;
         this.fecha_adp = fecha_adp;
         this.caracteristicas = caracteristicas;
+    }
+
+    public Image getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Image foto) {
+        this.foto = foto;
     }
 
     public int getId() {
