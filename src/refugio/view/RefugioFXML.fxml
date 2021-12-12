@@ -30,23 +30,28 @@
 
 <AnchorPane id="AnchorPane" prefHeight="748.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="refugio.controller.RefugioFXMLController">
    <children>
-      <Pane prefHeight="766.0" prefWidth="285.0">
+      <Pane prefHeight="766.0" prefWidth="285.0" style="-fx-background-color: #F4F4F4;">
          <children>
-            <VBox layoutX="-1.0" prefHeight="766.0" prefWidth="285.0">
+            <VBox layoutX="-1.0" prefHeight="766.0" prefWidth="285.0" style="-fx-background-color: #BA5536;">
                <children>
-                  <Pane prefHeight="152.0" prefWidth="310.0">
+                  <Pane prefHeight="152.0" prefWidth="310.0" style="-fx-background-color: #46211A;">
                      <children>
-                        <Label layoutX="84.0" layoutY="55.0" text="Regala Vida">
+                        <Label layoutX="84.0" layoutY="55.0" text="Regala Vida" textFill="WHITE">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <FontAwesomeIconView glyphName="PAW" layoutX="14.0" layoutY="102.0" size="60" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="PAW" layoutX="14.0" layoutY="102.0" size="60" />
                      </children>
                   </Pane>
-                  <MFXButton fx:id="btnListaAdopcion" layoutX="10.0" layoutY="162.0" onAction="#mostrarListaAdopcion" prefHeight="75.0" prefWidth="310.0" text="ListaAdopción" />
-                  <MFXButton fx:id="btnVacunacion" layoutX="10.0" layoutY="237.0" onAction="#mostrarVacunacion" prefHeight="75.0" prefWidth="310.0" text="Vacunación" />
-                  <MFXButton onAction="#prueba" text="PRUEBAS" />
+                  <MFXButton fx:id="btnListaAdopcion" layoutX="10.0" layoutY="162.0" onAction="#mostrarListaAdopcion" prefHeight="75.0" prefWidth="310.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="ListaAdopción" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font></MFXButton>
+                  <MFXButton fx:id="btnVacunacion" layoutX="10.0" layoutY="237.0" onAction="#mostrarVacunacion" prefHeight="75.0" prefWidth="310.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Vacunación" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font></MFXButton>
                </children></VBox>
          </children>
       </Pane>
@@ -83,7 +88,44 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <MFXTextField fx:id="filtrarTextField" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="187.0" promptText="buscar..." />
+                                    <MFXTextField fx:id="filtrarTextField" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="187.0" promptText="filtrar...(especie,raza,nombre)" />
+                                    <HBox alignment="CENTER_RIGHT" layoutX="420.0" layoutY="-1.0" prefHeight="127.0" prefWidth="381.0">
+                                       <children>
+                                          <MFXLegacyComboBox fx:id="sexo_buscar" prefHeight="23.0" prefWidth="79.0" promptText="sexo">
+                                             <HBox.margin>
+                                                <Insets left="16.0" />
+                                             </HBox.margin>
+                                          </MFXLegacyComboBox>
+                                          <MFXLegacyComboBox fx:id="especie_buscar" prefHeight="23.0" prefWidth="82.0" promptText="especie">
+                                             <HBox.margin>
+                                                <Insets left="16.0" />
+                                             </HBox.margin>
+                                          </MFXLegacyComboBox>
+                                          <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <MFXButton fx:id="btn_restaurar" onAction="#restaurarTablaAnimal" prefHeight="25.0" prefWidth="101.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Restaurar" textFill="WHITE">
+                                                   <VBox.margin>
+                                                      <Insets bottom="16.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </MFXButton>
+                                                <MFXButton fx:id="btn_buscar" onAction="#busquedaTablaAnimal" prefHeight="25.0" prefWidth="101.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Buscar" textFill="WHITE">
+                                                   <VBox.margin>
+                                                      <Insets top="16.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </MFXButton>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="16.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </AnchorPane>
                         </content>
@@ -92,7 +134,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox alignment="CENTER_LEFT" layoutX="648.0" layoutY="12.0" prefHeight="122.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <HBox alignment="CENTER_RIGHT" layoutX="648.0" layoutY="12.0" prefHeight="122.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <MFXTextField fx:id="nombre_alta" minWidth="-Infinity" prefHeight="25.0" prefWidth="95.0" promptText="nombre">
                                              <HBox.margin>
@@ -140,7 +182,7 @@
                                           </Pane>
                                           <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <MFXButton fx:id="btn_alta" onAction="#introducir_animal" prefHeight="25.0" prefWidth="70.0" text="Introducir" />
+                                                <MFXButton fx:id="btn_alta" onAction="#introducir_animal" prefHeight="30.0" prefWidth="69.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Introducir" textFill="WHITE" />
                                                 <MFXLabel fx:id="label_alta" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="70.0">
                                                    <VBox.margin>
                                                       <Insets top="8.0" />
@@ -155,7 +197,46 @@
                       </Tab>
                         <Tab text="Modificar">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="299.0" layoutY="11.0" prefHeight="122.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <MFXLabel prefHeight="27.0" prefWidth="139.0" text="Selecciona un animal en la tabla.">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </MFXLabel>
+                                          <MFXTextField fx:id="nombre_mod" promptText="nombre">
+                                             <HBox.margin>
+                                                <Insets left="16.0" />
+                                             </HBox.margin>
+                                          </MFXTextField>
+                                          <MFXTextField fx:id="peso_mod" promptText="peso">
+                                             <HBox.margin>
+                                                <Insets left="16.0" />
+                                             </HBox.margin>
+                                          </MFXTextField>
+                                          <Pane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea fx:id="caracteristicas_mod" layoutX="12.0" layoutY="49.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="176.0" promptText="caracteristicas" />
+                                             </children>
+                                          </Pane>
+                                          <VBox alignment="CENTER" prefHeight="122.0" prefWidth="139.0">
+                                             <children>
+                                                <MFXButton fx:id="btn_mod" onAction="#modificarAnimal" prefHeight="44.0" prefWidth="124.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Modificar" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></MFXButton>
+                                                <MFXLabel fx:id="label_mod">
+                                                   <VBox.margin>
+                                                      <Insets top="16.0" />
+                                                   </VBox.margin>
+                                                </MFXLabel>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children></AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="Adopcion">
@@ -163,7 +244,10 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <MFXLegacyComboBox fx:id="adpComboBox" layoutX="519.0" layoutY="50.0" onAction="#habilitarAdopcion" prefHeight="23.0" prefWidth="142.0" />
-                                    <MFXButton fx:id="btnAdoptar" disable="true" layoutX="675.0" layoutY="49.0" onAction="#adoptarAnimal" prefHeight="25.0" prefWidth="109.0" text="Adoptar" />
+                                    <MFXButton fx:id="btnAdoptar" disable="true" layoutX="675.0" layoutY="49.0" onAction="#adoptarAnimal" prefHeight="25.0" prefWidth="109.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Adoptar" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></MFXButton>
                                  </children>
                               </AnchorPane>
                           </content>
@@ -198,7 +282,7 @@
                               </TableView>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <ImageView fx:id="animalImagen" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                    <ImageView fx:id="animalImagen" fitHeight="150.0" fitWidth="150.0" onDragDropped="#arrastrarImagen" onDragOver="#terminarArrastrarImagen" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <viewport>
                                           <Rectangle2D />
                                        </viewport>
@@ -206,17 +290,23 @@
                                           <Image url="@../image/drag-and-drop-image.png" />
                                        </image>
                                     </ImageView>
-                                    <MFXLabel fx:id="animalVacuna">
+                                    <MFXLabel fx:id="animalVacuna" prefHeight="35.0" prefWidth="142.0">
                                        <VBox.margin>
                                           <Insets top="32.0" />
                                        </VBox.margin>
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
                                     </MFXLabel>
                                  </children></VBox>
                               <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                  <children>
-                                    <MFXLegacyComboBox fx:id="perro_vacuna" disable="true" layoutX="38.0" layoutY="148.0" prefHeight="23.0" prefWidth="95.0" promptText="vacuna" />
-                                    <MFXButton disable="true" layoutX="11.0" layoutY="69.0" prefHeight="53.0" prefWidth="149.0" text="Suministrar Dosis" />
-                                    <MFXLegacyComboBox fx:id="gato_vacuna" disable="true" layoutX="38.0" layoutY="148.0" prefHeight="23.0" prefWidth="95.0" promptText="vacuna" />
+                                    <MFXLegacyComboBox fx:id="perro_vacuna" disable="true" layoutX="38.0" layoutY="148.0" onAction="#activarDosis" prefHeight="23.0" prefWidth="95.0" promptText="vacuna" />
+                                    <MFXButton fx:id="btn_dosis" disable="true" layoutX="11.0" layoutY="69.0" onAction="#insertarDosis" prefHeight="53.0" prefWidth="149.0" rippleColor="#ba5536" style="-fx-background-color: #693D3D;" text="Suministrar Dosis" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></MFXButton>
+                                    <MFXLegacyComboBox fx:id="gato_vacuna" disable="true" layoutX="38.0" layoutY="148.0" onAction="#activarDosis" prefHeight="23.0" prefWidth="95.0" promptText="vacuna" />
                                  </children>
                               </Pane>
                            </children>

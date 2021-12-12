@@ -17,7 +17,7 @@ public class RefugioMain extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("RefugioFXML.fxml"));
- 
+        
         root.setOnMousePressed((MouseEvent event) -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();

@@ -1,7 +1,9 @@
 package refugio.model;
 
 /**
- *
+ * @description
+ * Clase Vacuna
+ * 
  * @author rodri
  */
 public class Vacuna {

@@ -1,10 +1,11 @@
 package refugio.model;
 
-import java.io.FileInputStream;
 import javafx.scene.image.Image;
 
 /**
- *
+ * @description
+ * Clase Animal
+ * 
  * @author rodri
  */
 public class Animal {
